@@ -1,4 +1,4 @@
-defmodule NewRelicPhoenix.Instrumenter do
+defmodule NewRelic.Phoenix.Instrumenter do
   def phoenix_error_render(
         :start,
         _compile,
@@ -20,7 +20,7 @@ defmodule NewRelicPhoenix.Instrumenter do
     ]
     |> NewRelic.add_attributes()
 
-    NewRelicPhoenix.Transaction.Plug.before_send(conn)
+    NewRelic.Phoenix.Transaction.Plug.before_send(conn)
     NewRelic.Transaction.Reporter.fail(error)
   end
 end

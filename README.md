@@ -26,12 +26,12 @@ You must configure the agent to authenticate to New Relic. Please see: https://g
 
 ## Instrumentation
 
-* Inside your Phoenix Endpoint module, `use` the `NewRelicPhoenix.Transaction` module:
+* Inside your Phoenix Endpoint module, `use` the `NewRelic.Phoenix.Transaction` module:
 
 ```elixir
 defmodule MyApp.Endpoint do
   use Phoenix.Endpoint, otp_app: :my_app
-  use NewRelicPhoenix.Transaction
+  use NewRelic.Phoenix.Transaction
   # ...
 end
 ```
@@ -40,7 +40,7 @@ In your Phoenix Endpoint configuration, add the instrumenter:
 
 ```elixir
 config :my_app, MyApp.Endpoint,
-  instrumenters: [NewRelicPhoenix.Instrumenter]
+  instrumenters: [NewRelic.Phoenix.Instrumenter]
 ```
 
 

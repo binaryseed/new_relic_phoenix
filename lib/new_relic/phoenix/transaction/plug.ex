@@ -1,4 +1,4 @@
-defmodule NewRelicPhoenix.Transaction.Plug do
+defmodule NewRelic.Phoenix.Transaction.Plug do
   @behaviour Plug
   import Plug.Conn
 
