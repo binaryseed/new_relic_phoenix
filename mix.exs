@@ -33,7 +33,9 @@ defmodule NewRelicPhoenix.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:phoenix, ">= 1.4.0-rc"},
+      {:new_relic_agent, ">= 1.0.5"}
     ]
   end
 end
