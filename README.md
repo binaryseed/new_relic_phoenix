@@ -13,7 +13,7 @@ Check out the agent for more:
 * Cowboy 2 is required. Phoenix support was introduced in `1.4`
 
 ```elixir
-defp deps do
+def deps do
   [
     {:new_relic_phoenix, "~> 1.0"},
     {:phoenix, "~> 1.4.0-rc"},
