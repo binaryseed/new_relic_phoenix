@@ -13,7 +13,7 @@ defmodule NewRelic.Phoenix.Transaction.Plug do
 
   def before_send(conn) do
     add_phoenix_attributes(conn)
-    set_transaction_name(conn)
+    set_framework_name(conn)
     conn
   end
 
@@ -34,13 +34,13 @@ defmodule NewRelic.Phoenix.Transaction.Plug do
 
   def add_phoenix_attributes(_), do: :ignore
 
-  def set_transaction_name(%{private: %{phoenix_controller: controller, phoenix_action: action}}) do
+  def set_framework_name(%{private: %{phoenix_controller: controller, phoenix_action: action}}) do
     NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(controller)}/#{action}")
   end
 
-  def set_transaction_name(%{private: %{phoenix_endpoint: endpoint}} = conn) do
+  def set_framework_name(%{private: %{phoenix_endpoint: endpoint}} = conn) do
     NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(endpoint)}#{conn.request_path}")
   end
 
-  def set_transaction_name(_), do: :ignore
+  def set_framework_name(_), do: :ignore
 end
