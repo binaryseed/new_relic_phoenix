@@ -14,12 +14,7 @@ defmodule NewRelic.Phoenix.Instrumenter do
   end
 
   def phoenix_error_render(:stop, _time_diff, {conn, status, error}) do
-    [
-      plug_name: NewRelic.Transaction.Plug.plug_name(conn),
-      status: status
-    ]
-    |> NewRelic.add_attributes()
-
+    NewRelic.add_attributes(status: status)
     NewRelic.Phoenix.Transaction.Plug.before_send(conn)
     NewRelic.Transaction.Reporter.fail(error)
   end
