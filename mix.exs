@@ -17,8 +17,7 @@ defmodule NewRelicPhoenix.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
-      mod: {NewRelicPhoenix.Application, []}
+      extra_applications: [:logger]
     ]
   end
 
@@ -33,7 +32,9 @@ defmodule NewRelicPhoenix.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:phoenix, ">= 1.4.0-rc"},
+      {:new_relic_agent, ">= 1.0.5"}
     ]
   end
 end
