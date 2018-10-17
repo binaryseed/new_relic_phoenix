@@ -5,7 +5,7 @@ defmodule NewRelicPhoenix.MixProject do
     [
       app: :new_relic_phoenix,
       description: "New Relic Instrumentation adapter for Phoenix",
-      version: "0.1.0-rc.0",
+      version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       name: "New Relic Phoenix",
@@ -33,8 +33,8 @@ defmodule NewRelicPhoenix.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix, ">= 1.4.0-rc"},
-      {:new_relic_agent, ">= 1.0.5"}
+      {:phoenix, ">= 1.4.0"},
+      {:new_relic_agent, ">= 1.1.0"}
     ]
   end
 end
