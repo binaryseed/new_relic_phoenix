@@ -15,8 +15,8 @@ Check out the agent for more:
 ```elixir
 def deps do
   [
-    {:new_relic_phoenix, "~> 1.0"},
-    {:phoenix, "~> 1.4.0-rc"},
+    {:new_relic_phoenix, "~> 0.1"},
+    {:phoenix, "~> 1.4"},
     {:cowboy, "~> 2.5"}
   ]
 end
