@@ -17,7 +17,7 @@ def deps do
   [
     {:new_relic_phoenix, "~> 0.1"},
     {:phoenix, "~> 1.4"},
-    {:cowboy, "~> 2.5"}
+    {:plug_cowboy, "~> 2.0"}
   ]
 end
 ```
