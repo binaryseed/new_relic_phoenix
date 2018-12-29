@@ -33,8 +33,8 @@ defmodule NewRelicPhoenix.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix, ">= 1.4.0"},
-      {:new_relic_agent, ">= 1.1.0"}
+      {:phoenix, "~> 1.4"},
+      {:new_relic_agent, "~> 1.4"}
     ]
   end
 end
