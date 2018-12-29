@@ -21,13 +21,13 @@ defmodule NewRelic.Phoenix.Transaction.Plug do
         private: %{phoenix_controller: controller, phoenix_action: action} = private
       }) do
     [
-      phoenix_controller: inspect(controller),
-      phoenix_action: action,
-      phoenix_endpoint: inspect(private[:phoenix_endpoint]),
-      phoenix_router: inspect(private[:phoenix_router]),
-      phoenix_format: private[:phoenix_format],
-      phoenix_template: private[:phoenix_template],
-      phoenix_view: inspect(private[:phoenix_view])
+      "phoenix.controller": inspect(controller),
+      "phoenix.action": action,
+      "phoenix.endpoint": inspect(private[:phoenix_endpoint]),
+      "phoenix.router": inspect(private[:phoenix_router]),
+      "phoenix.format": private[:phoenix_format],
+      "phoenix.template": private[:phoenix_template],
+      "phoenix.view": inspect(private[:phoenix_view])
     ]
     |> NewRelic.add_attributes()
   end
