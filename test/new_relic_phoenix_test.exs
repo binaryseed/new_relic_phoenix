@@ -39,7 +39,6 @@ defmodule NewRelicPhoenixTest do
     :ok
   end
 
-  @tag :capture_log
   test "Report expected events!" do
     restart_harvest_cycle(Collector.TransactionEvent.HarvestCycle)
 
@@ -54,7 +53,10 @@ defmodule NewRelicPhoenixTest do
     refute tx_event[:error]
     assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestController/index"
     assert tx_event[:"phoenix.controller"] == "NewRelicPhoenixTest.TestController"
+  end
 
+  @tag :capture_log
+  test "Report expected events when there is an error" do
     restart_harvest_cycle(Collector.TransactionEvent.HarvestCycle)
 
     %{body: body} = HTTPoison.get!("http://localhost:#{@port}/error")
@@ -66,6 +68,8 @@ defmodule NewRelicPhoenixTest do
     assert tx_event[:status] == 500
     assert tx_event[:path] == "/error"
     assert tx_event[:error] == true
+    assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestController/error"
+    assert tx_event[:"phoenix.controller"] == "NewRelicPhoenixTest.TestController"
   end
 
   defp restart_harvest_cycle(harvest_cycle) do
