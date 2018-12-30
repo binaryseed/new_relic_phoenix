@@ -1,6 +1,7 @@
 # New Relic Phoenix
 
 [![Hex.pm Version](https://img.shields.io/hexpm/v/new_relic_phoenix.svg)](https://hex.pm/packages/new_relic_phoenix)
+[![Build Status](https://travis-ci.org/binaryseed/new_relic_phoenix.svg?branch=master)](https://travis-ci.org/binaryseed/new_relic_phoenix)
 
 This package adds `Phoenix` specific instrumentation on top of the `new_relic_agent` package. You may use all the built-in capabilities of the New Relic Agent!
 
