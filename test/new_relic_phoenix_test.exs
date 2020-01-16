@@ -18,6 +18,7 @@ defmodule NewRelicPhoenixTest do
   end
 
   defmodule ErrorView do
+    def render("404.html", _), do: "Not Found"
     def render(_, _), do: "Error"
   end
 
@@ -39,6 +40,7 @@ defmodule NewRelicPhoenixTest do
     :ok
   end
 
+  @tag :capture_log
   test "Report expected events!" do
     restart_harvest_cycle(Collector.TransactionEvent.HarvestCycle)
 
@@ -70,6 +72,23 @@ defmodule NewRelicPhoenixTest do
     assert tx_event[:error] == true
     assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestController/error"
     assert tx_event[:"phoenix.controller"] == "NewRelicPhoenixTest.TestController"
+  end
+
+  @tag :capture_log
+  test "Report expected events when no route is found" do
+    restart_harvest_cycle(Collector.TransactionEvent.HarvestCycle)
+
+    %{body: body} = HTTPoison.get!("http://localhost:#{@port}/not_found")
+
+    assert body == "Not Found"
+
+    [[_, tx_event]] = gather_harvest(Collector.TransactionEvent.Harvester)
+
+    assert tx_event[:status] == 404
+    assert tx_event[:path] == "/not_found"
+    assert tx_event[:error] == nil
+    assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestEndpoint/not_found"
+    assert tx_event[:"phoenix.controller"] == nil
   end
 
   defp restart_harvest_cycle(harvest_cycle) do
