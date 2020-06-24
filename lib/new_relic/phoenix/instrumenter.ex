@@ -18,7 +18,8 @@ defmodule NewRelic.Phoenix.Instrumenter do
     NewRelic.Phoenix.Transaction.Plug.before_send(conn)
 
     if status >= 500 do
-      NewRelic.Transaction.Reporter.fail(error)
+      NewRelic.Transaction.Reporter.error(self(), error)
+      NewRelic.Transaction.Reporter.fail(self(), error)
     end
   end
 end
