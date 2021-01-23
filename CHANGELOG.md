@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### `v0.3.1`
+
+* Don't include full URL in Transaction name, it just leads to Metric Explosions.
+
 ### `v0.3.0`
 
 * Fix to work with latest agent version. [#16](https://github.com/binaryseed/new_relic_phoenix/pull/16) Thanks @claudioStahl!

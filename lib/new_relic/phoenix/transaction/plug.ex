@@ -39,7 +39,7 @@ defmodule NewRelic.Phoenix.Transaction.Plug do
   end
 
   def set_framework_name(%{private: %{phoenix_endpoint: endpoint}} = conn) do
-    NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(endpoint)}#{conn.request_path}")
+    NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(endpoint)}")
   end
 
   def set_framework_name(_), do: :ignore

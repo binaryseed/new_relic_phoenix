@@ -87,7 +87,7 @@ defmodule NewRelicPhoenixTest do
     assert tx_event[:status] == 404
     assert tx_event[:path] == "/not_found"
     assert tx_event[:error] == nil
-    assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestEndpoint/not_found"
+    assert tx_event[:framework_name] == "/Phoenix/NewRelicPhoenixTest.TestEndpoint"
     assert tx_event[:"phoenix.controller"] == nil
   end
 
