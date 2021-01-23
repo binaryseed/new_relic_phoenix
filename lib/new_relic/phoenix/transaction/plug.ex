@@ -38,7 +38,7 @@ defmodule NewRelic.Phoenix.Transaction.Plug do
     NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(controller)}/#{action}")
   end
 
-  def set_framework_name(%{private: %{phoenix_endpoint: endpoint}} = conn) do
+  def set_framework_name(%{private: %{phoenix_endpoint: endpoint}}) do
     NewRelic.add_attributes(framework_name: "/Phoenix/#{inspect(endpoint)}")
   end
 
