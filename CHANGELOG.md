@@ -2,6 +2,12 @@
 
 ### `v0.3.1`
 
+#### DEPRECATED!
+
+* Instrumentation is built into the agent via `telemetry` now.
+
+### `v0.3.1`
+
 * Don't include full URL in Transaction name, it just leads to Metric Explosions.
 
 ### `v0.3.0`

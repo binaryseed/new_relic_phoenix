@@ -1,9 +1,6 @@
 defmodule NewRelic.Phoenix.Transaction do
+  @deprecated "Phoenix is now auto-instrumented via `telemetry`, please remove manual instrumentation."
   defmacro __using__(_) do
-    quote do
-      plug(NewRelic.Transaction.Plug)
-      plug(NewRelic.Phoenix.Transaction.Plug)
-      plug(NewRelic.DistributedTrace.Plug)
-    end
+    :not_needed!
   end
 end
